@@ -4,7 +4,7 @@ Atividade da disciplina de **Desenvolvimento de Jogos Digitais** (Ciência da Co
 
 Autor: **Heitor Lupino**
 
-Projeto Unity 2D com uma plataforma que fica parada até o jogador encostar nela. A partir do contato, ela anda para a direita com velocidade constante por 5 segundos, depois para e cai com a gravidade. Quando sai da tela por baixo, a plataforma volta para a posição inicial e pode ser usada de novo.
+Projeto Unity 2D com uma plataforma que fica parada até o jogador encostar nela. A partir do contato, ela anda para a direita com velocidade constante por 5 segundos, depois para e cai com a gravidade. Quando sai da tela por baixo, a plataforma reaparece no lado do buraco em que o jogador está e, no próximo toque, anda no sentido contrário. Assim dá para atravessar de volta.
 
 ## Controles
 
@@ -15,7 +15,7 @@ Projeto Unity 2D com uma plataforma que fica parada até o jogador encostar nela
 
 ## Como testar
 
-Ande até o buraco e suba na plataforma. Ela começa a andar para a direita e leva você até perto do outro lado. Pule para o chão da direita antes que ela pare e caia. Se você cair no buraco, volta para o começo. Depois que a plataforma cai, ela reaparece no lugar de origem, então dá para atravessar de novo.
+Ande até o buraco e suba na plataforma. Ela começa a andar para a direita e leva você até perto do outro lado. Pule para o chão da direita antes que ela pare e caia. Se você cair no buraco, volta para o começo. Depois que a plataforma cai, ela reaparece do lado em que você está (esquerdo ou direito), então dá para atravessar de volta quantas vezes quiser.
 
 ## Como cada requisito foi feito
 
@@ -28,7 +28,7 @@ Script principal: [`Assets/Scripts/PlataformaMovel.cs`](Assets/Scripts/Plataform
 | 3. Movimento em linha reta e velocidade constante | `rb.linearVelocity = direcao * velocidade` (direção: direita) |
 | 4. Dura exatamente 5 segundos | Coroutine com `WaitForSeconds(duracaoMovimento)`, que vale 5 |
 | 5. Para e cai | Velocidade zerada, depois o corpo vira **Dynamic** com `gravityScale` maior que zero |
-| 6. Ativa só uma vez | A variável `foiAtivada` impede que o movimento recomece se o jogador encostar de novo durante o movimento ou a queda. Ela só volta a ser `false` quando a plataforma reaparece na posição inicial |
+| 6. Ativa só uma vez | A variável `foiAtivada` impede que o movimento recomece se o jogador encostar de novo durante o movimento ou a queda. Ela só volta a ser `false` quando a plataforma reaparece |
 
 O personagem usa o mesmo script de movimentação do quiz anterior ([`MovimentoJogador.cs`](Assets/Scripts/MovimentoJogador.cs)). Ele ganhou duas coisas: acompanha a velocidade da plataforma quando está em cima dela e volta para o início se cair no buraco.
 
